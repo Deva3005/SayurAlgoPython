@@ -15,7 +15,9 @@ Example:
 
 Approach 
 1. Raw Logic
-2. Recursion 
+2. Recursion
+
+Missed Point compare the 3 integers and find which take less steps to reach 1
 '''
 
 # Brute Force
@@ -36,17 +38,32 @@ while(True):
 # Recursion
 print("\nRecursion Technique\n")
 
+counter=0
 def recurNumber(n):
+    if (n<1 or type(n) != int):
+        print("DO PROVIDE PROPER INPUTS (^_^) Bye!")
+        exit(0)
+    global counter
     if n==1:
         print(n)
-        return 1
+        counter+=1
+        temp = counter
+        counter=0
+        return temp
     else:
         if(n%2==0):
             print(n,end=",")
+            counter+=1
             return recurNumber(n//2)
         else:
             print(n,end=",")
+            counter+=1
             return recurNumber((3*n)+1)
         
-recurNumber(8)
-recurNumber(9)
+a,b=map(int,input("Enter 2 numbers [non-negative, RealNumbers] with space\n").split())
+x,y=map(recurNumber,[a,b])
+
+if x>y:
+    print(f"Number {b} takes {y} to reach 1")
+else:
+    print(f"Number {a} takes {x} to reach 1")
