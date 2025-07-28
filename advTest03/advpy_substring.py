@@ -22,7 +22,8 @@ The end.------------------------no  'a' in substring [4] if last one is added :)
 
 Answer is 4 
 (The king, the forest, The King,
-[the next + doubt focused loss in explaination]).
+[the next])
+ + doubt??? focus loss in explaination]).
 
 '''
 
@@ -73,7 +74,7 @@ def runAdvpy3(filePath:str):
     # It's ACTION time
     # When FUNCTIONS Calls!!!
     # Drop the Absoulte path of the file Here as an required need input!!!
-    paragraph=formatFile()
+    paragraph=formatFile(filePath)
     requiredData=gettingIndexes(paragraph)
 
     # THE REAL ANSWER #
@@ -84,4 +85,4 @@ def runAdvpy3(filePath:str):
 
 
 # THE END #
-runAdvpy3("/media/deva/Storage/Python/learnFastApi/Adv03/text.txt")
+runAdvpy3("./SayurAlgoPython/advTest03/advpy_test03.txt")
