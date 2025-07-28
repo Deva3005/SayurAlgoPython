@@ -73,7 +73,7 @@ def runAdvpy3(filePath:str):
     # It's ACTION time
     # When FUNCTIONS Calls!!!
     # Drop the Absoulte path of the file Here as an required need input!!!
-    paragraph=formatFile()
+    paragraph=formatFile(filePath)
     requiredData=gettingIndexes(paragraph)
 
     # THE REAL ANSWER #
