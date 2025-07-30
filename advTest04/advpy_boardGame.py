@@ -1,5 +1,21 @@
 '''
-Me and The Devil
+You have 6 x 6 game board where each cell is shown as a *
+
+This is a two player dice game. 
+
+The die has numbers 1 to 6.
+
+Each player rolls the dice twice. 
+First roll is row number, 
+second roll is col number.
+
+After the player rolls the dice, in the (row,col) enter the player's initial. 
+If the player A rolls the dice and if player B already has their initial in the same row,col
+add a point to A and change the initial to A. 
+
+Player who gets 5 points first wins the game.
+
+Me and The FOE
 Walking side by side...
 '''
 # To Generate RANDOM numbers between 0 and 5 [6]
@@ -17,16 +33,16 @@ theBoard=[]
 # CYCLES
 cycle=1
 
-def resetBoard():
-    for i in range(6):
+def setBoard(n):
+    for i in range(n):
         temp=[]
-        for j in range(6):
-            temp.append("0")
+        for j in range(n):
+            temp.append("*")
         theBoard.append(temp)
     return theBoard
 
-theBoard=resetBoard()
-theBoard.append([0,0])
+theBoard=setBoard(6) # Set the Matrix :: Board Size
+theBoard.append([0,0]) # Temp Space in Board for the piecies got killed
 print(theBoard)
     
 # POINTS
@@ -46,7 +62,7 @@ def piecesInBoard(player:str):
 
 # CLEAR THE PIECE before the New position
 def clearThePiece(x:int,y:int):
-    theBoard [x] [y] ='0'
+    theBoard [x] [y] ='*'
 
 # PRINT THE BOARD
 def printBoard():
@@ -62,18 +78,18 @@ x,y,x1,y1=0,0,0,0
 while True:
     print("The Last Throws ",x,y,x1,y1)
     print("+"*20)
-    print("Iteration",cycle)
+    
     cycle+=1
     if playerA_pts==5:
         print("I Won the Match")
         break
     if playerB_pts==5:
-        print("Devil Won the Match")
+        print("The FOE Won the Match")
         break
-    
+    print("Iteration ",cycle)
     clearThePiece(x,y)
     x,y=piecesInBoard("ME")
-    print("Me::::::",x,y)
+    print("Me::::::::",x,y)
 
     if(x==x1 and y==y1):
         print("I Score a Point")
@@ -82,10 +98,10 @@ while True:
         playerA_pts+=1
         x1,y1=6,1
     clearThePiece(x1,y1)
-    x1,y1=piecesInBoard("The Devil")
-    print("Devil:::",x1,y1)
+    x1,y1=piecesInBoard("The FOE")
+    print("The FOE:::",x1,y1)
     if(x1==x and y1==y):
-        print("Devil score a Point")
+        print("The FOE score a Point")
         printBoard()
         print(x,y,x1,y1)
         playerB_pts+=1
@@ -93,8 +109,8 @@ while True:
     printBoard()
     print("...resetting...")
 
-print("Me......",playerA_pts)
-print("Devil...",playerB_pts)
+print("Me........",playerA_pts)
+print("The FOE...",playerB_pts)
     
         
         
