@@ -33,6 +33,9 @@ theBoard=[]
 # CYCLES
 cycle=1
 
+# Matrix Size
+matrix=6
+
 def setBoard(n):
     for i in range(n):
         temp=[]
@@ -41,7 +44,7 @@ def setBoard(n):
         theBoard.append(temp)
     return theBoard
 
-theBoard=setBoard(6) # Set the Matrix :: Board Size
+theBoard=setBoard(matrix) # Set the Matrix :: Board Size
 theBoard.append([0,0]) # Temp Space in Board for the piecies got killed
 print(theBoard)
     
@@ -49,15 +52,16 @@ print(theBoard)
 playerA_pts=0
 playerB_pts=0
 
-# ROLL
+# 6-Face DIE :: ROLL
 def rollDice()->int:
     return random.randrange(0,6) # randrange(start[include],stop[exclude])
 
 # Placing the PIECE and RETURNING CO-ORDINATES
 def piecesInBoard(player:str):
     x,y=rollDice(),rollDice()
-    # print(x,y)
     theBoard[x][y]=player
+    print(player," Roll Roll...")
+    printBoard()
     return x,y
 
 # CLEAR THE PIECE before the New position
@@ -66,51 +70,63 @@ def clearThePiece(x:int,y:int):
 
 # PRINT THE BOARD
 def printBoard():
-    print("+"*10)
+    print("+"*10*matrix)
     for i in theBoard:
         print(i)
-    print("+"*10)
+    print("+"*10*matrix)
 
 # TEMP variables
 x,y,x1,y1=0,0,0,0
 
+player1=input("Enter Player 1 Name:")
+player2=input("Enter Player 2 Name:")
+
 # MASTER LOOP || HEART OF THE PROGRAM
 while True:
-    print("The Last Throws ",x,y,x1,y1)
-    print("+"*20)
+
+    # Debug Lines
+    # print("The Last Throws ",x,y,x1,y1)
+    # print("+"*20)
     
     cycle+=1
+
     if playerA_pts==5:
-        print("I Won the Match")
+        print(f"{player1} Won the Match")
         break
     if playerB_pts==5:
-        print("The FOE Won the Match")
+        print(f"{player2} Won the Match")
         break
+
     print("Iteration ",cycle)
     clearThePiece(x,y)
-    x,y=piecesInBoard("ME")
-    print("Me::::::::",x,y)
 
+    x,y=piecesInBoard(player1)
     if(x==x1 and y==y1):
-        print("I Score a Point")
-        printBoard()
-        print(x,y,x1,y1)
+        print(f"{player1} Score a Point")
+        print("+"*10*matrix)
+        # print(x,y,x1,y1)
         playerA_pts+=1
         x1,y1=6,1
-    clearThePiece(x1,y1)
-    x1,y1=piecesInBoard("The FOE")
-    print("The FOE:::",x1,y1)
-    if(x1==x and y1==y):
-        print("The FOE score a Point")
+        theBoard[x1][y1]=player2
         printBoard()
-        print(x,y,x1,y1)
+
+    clearThePiece(x1,y1)
+
+    x1,y1=piecesInBoard(player2)
+    
+    if(x1==x and y1==y):
+        print(f"{player2} Score a Point")
+        print("+"*10*matrix)
+        # print(x,y,x1,y1)
         playerB_pts+=1
         x,y=6,0
-    printBoard()
-    print("...resetting...")
+        theBoard[x][y]=player1
+        printBoard()
+    print()
+    print()
 
-print("Me........",playerA_pts)
-print("The FOE...",playerB_pts)
+print(player1,"........",playerA_pts)
+print(player2,"........",playerB_pts)
     
         
         
