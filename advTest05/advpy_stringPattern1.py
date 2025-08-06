@@ -7,6 +7,12 @@ abacaba
 abacabadabacaba
 abacabadabacabaeabacabadabacaba
 
+Working:
+        a
+      a b a
+    aba c aba
+abacaba d abacaba
+
 '''
 
 import string
