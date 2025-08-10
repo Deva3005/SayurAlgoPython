@@ -17,6 +17,9 @@ there are many simple answers. you can try with slice function
 # print(s2[s2.index(s1[0]):]+s2[:s2.index(s1[0])])
 
 def checkString(s1:str,s2:str)->bool:
+    # s1=s1.split(" ")
+    # s2=s2.split(" ")
+    print(s2[s2.index(s1[0]):]+s2[:s2.index(s1[0])])
     if s1 == s2[s2.index(s1[0]):]+s2[:s2.index(s1[0])]:
         print(True," Same Sequence Rotated")
         return True
@@ -42,3 +45,6 @@ print()
 print('checkString("123456","412356")')
 checkString("123456","412356")
 print()
+
+
+checkString("Hello Python ","Python Hello ") # Error:: Question Out Of Bound 
