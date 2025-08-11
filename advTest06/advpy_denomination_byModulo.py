@@ -24,12 +24,12 @@ if(balance<=0):
 temp = balance
 
 # While Loop
-# BRUTE FORCE PRIMATE INTELLIFORCE
+# BRUTE FORCE PRIMATE INTELLIFORCE [ACTIVATE]
 while (temp != 0): # CONDITION Until temp get ZERO
     if temp>=max(denomination): # HERE it Choose the Best Denomination // Forget SORTING it takes the MAX()
-        temp%=max(denomination) # DONE !!! <- here...
         answer.setdefault(max(denomination),0)
-        answer[max(denomination)]+=1 # INCREAMENTING
+        answer[max(denomination)] = temp//max(denomination) # INCREAMENTING || Serious FIX Added here
+        temp%=max(denomination) # DONE !!! <- here... ReArranged 
     else:
         denomination.remove(max(denomination)) #
 
