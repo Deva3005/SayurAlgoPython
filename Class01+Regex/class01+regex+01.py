@@ -5,9 +5,9 @@
 # :::::::::::::::::::::::::::::::::::::::::::
 
 # 1. Validate a phone number format like 123-456-7890...................................[ok]
-# 2. Check if a password has at least one uppercase, one lowercase, and one digit.......[no]
+# 2. Check if a password has at least one uppercase, one lowercase, and one digit.......[no][need Help on Lookups?=]
 # 3. Extract all hashtags from a social media post......................................[ok]
-# 4. Find all occurrences of 'cat' or 'dog' in a text
+# 4. Find all occurrences of 'cat' or 'dog' in a text...................................[ok]
 
 # Question 00
 # Email Validation
@@ -70,8 +70,8 @@ print(phone2,bool(answer))
 # [0-9] :: Digits
 # {n}   :: Specifying Length
 
-pass1="1234567"
-a=re.findall(r".*[a-zA-Z0-9].*",pass1)
+pass1="""Lonewolf"""
+a=re.match(r".*[?=a-zA-Z0-9].*",pass1) # NEED HELP ON THIS!!!
 print("\n\nQ2: Validate Password atLeast 1Cap, 1Small, 1Num\n")
 print(a)
 
