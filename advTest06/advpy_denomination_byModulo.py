@@ -26,6 +26,16 @@ temp = balance
 # While Loop
 # BRUTE FORCE PRIMATE INTELLIFORCE [ACTIVATE]
 while (temp != 0): # CONDITION Until temp get ZERO
+    
+    for i in reversed(denomination):
+        if temp==0:
+            break
+        if i==1:
+            continue
+        if temp%i==0:
+            answer.setdefault(i,0)
+            answer[i]=temp/i
+            temp=0
     if temp>=max(denomination): # HERE it Choose the Best Denomination // Forget SORTING it takes the MAX()
         answer.setdefault(max(denomination),0)
         answer[max(denomination)] = temp//max(denomination) # INCREAMENTING || Serious FIX Added here
