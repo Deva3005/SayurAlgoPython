@@ -34,7 +34,7 @@ while (temp != 0): # CONDITION Until temp get ZERO
             continue
         if temp%i==0:
             answer.setdefault(i,0)
-            answer[i]=temp/i
+            answer[i]=temp//i
             temp=0
     if temp>=max(denomination): # HERE it Choose the Best Denomination // Forget SORTING it takes the MAX()
         answer.setdefault(max(denomination),0)

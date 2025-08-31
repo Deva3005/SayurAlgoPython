@@ -22,7 +22,12 @@ for i in puzzle1:
         continue
     else:
         try:
-            testPuzzle.append(list(map(int,i.split(" ")))) #'''''''If input is Not other than number It will throw Error
+            temp_l = list(map(int,i.split(" ")))
+            if list(filter(lambda x : x>9,temp_l)):
+                print("ERROR :: Validation Issue... some number greater than '9'\n")
+                print(temp_l)
+                exit(0)
+            testPuzzle.append(temp_l) #'''''''If input is Not other than number It will throw Error
         except Exception as e:
             print(e)
             print("SOMETHING WRONG WITH INPUT")
@@ -74,5 +79,6 @@ def solve3x3grids(puzzle:list[list[str]]):
 if CheckSudokuIsSolved(testPuzzle) and solve3x3grids(testPuzzle):
     print("Solved")
     print("Thanks for PLAYING!!!")
+    print(*puzzle1,sep="\n")
 else:
     print("Not Solved Try Again...")
