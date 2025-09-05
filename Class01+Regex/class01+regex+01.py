@@ -22,14 +22,16 @@
 # \b     :: set Bounds                                   :: \b
 
 # ANSWER
-# [\w\d.-]{5,} :: words,digits
+# (?=[a-z]) :: words,digits
 # @
 # \w
 # \.
 
 import re
 
-text1 = "deva-3005@gmail.com >>> e@e.com [wont come] <<<- check me is a kind of email"
+text1 = ""\
+"deva-3005@gmail.com deva >>> " \
+"e@e.com [wont come] <<<- check me is a kind of email"
 text2 = "wishingGold wish some luck for me deva01@canis.edu.in random words to fill sentences"
 text3 = "@sample.com spooky edge case to confuse cause trouble chaos.."
 
@@ -37,7 +39,7 @@ text3 = "@sample.com spooky edge case to confuse cause trouble chaos.."
 print("\n\nQ0: Validate email\n")
 answer = re.findall(r"^[\w.-]{4,}@\w*\.\w{2,}\b",text1)
 print(answer)
-answer = re.findall(r"[a-zA-Z0-9.-]{4,}@\w*\.\w{2,}\b",text2) 
+answer = re.findall(r"[a-zA-Z0-9.-]{4,}@\w*\.\w{2,}\b",text3) 
 # ^[a-zA-Z0-9.-]{4,}@\w*\.\w{2,}\b is not working here!!!
 print(answer)
 
@@ -49,8 +51,8 @@ print(answer)
 # Only digits \d{3}-\d{3}-\d{4}
 
 print("\n\nQ1: Validate PhoneNumber as per the Pattern\n")
-phone1 = "123-123-1234" # True
-answer=re.match(r"\d{3}-\d{3}-\d{4}",phone1)
+phone1 = "123-123-1234 5789" # True
+answer=re.match(r"^\d{3}-\d{3}-\d{4}$",phone1)
 print(phone1,bool(answer))
 
 phone2 = "12-123-1234" #False
@@ -70,8 +72,9 @@ print(phone2,bool(answer))
 # [0-9] :: Digits
 # {n}   :: Specifying Length
 
-pass1="""Lonewolf"""
-a=re.match(r".*[?=a-zA-Z0-9].*",pass1) # NEED HELP ON THIS!!!
+pass1="""lonewol@f23"""
+# a=re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,}$",pass1) # NEED HELP ON THIS!!!
+a=re.match(r"^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,}$",pass1) # NEED HELP ON THIS!!!
 print("\n\nQ2: Validate Password atLeast 1Cap, 1Small, 1Num\n")
 print(a)
 
