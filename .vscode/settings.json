@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "./HomeWork/hw01",
+        "./HomeWork/hw01/_03_",
+        "./HomeWork/hw01/_03_",
+        "./HomeWork/hw01/_03_",
+        "./HomeWork/hw02/_03_"
+    ]
+}
